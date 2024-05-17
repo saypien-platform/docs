@@ -1,0 +1,129 @@
+---
+title: "Getting Started"
+description: "How to install and integrate the Saypien JavaScript Library"
+---
+
+<Info>
+  **Prerequisite** You should have basic knowledge of JavaScript and your
+  website should be hosted on a platform like Vercel to load the library via a
+  CDN.
+</Info>
+
+### Step 1.
+
+Embed the Saypien JavaScript Library in your website.
+
+<CodeGroup>
+
+```html
+<script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+```
+
+</CodeGroup>
+
+### Step 2.
+
+Add the JavaScript file to the `<HEAD>` section of your HTML file:
+
+<CodeGroup>
+
+```html index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saypien Survey</title>
+    <script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+  </head>
+  <body>
+    <!-- Your content -->
+  </body>
+</html>
+```
+
+</CodeGroup>
+
+### Step 3.
+
+Initialize the library with a configuration:
+
+<CodeGroup>
+
+```html index.html
+<script>
+  window.SaypienSurvey.initialize({
+    buttonId: "myButton", // Set to null if no button is used
+    surveyId: "<YOUR_SURVEY_ID>", // Your specific survey ID
+  });
+</script>
+```
+
+</CodeGroup>
+
+### Step 4.
+
+Add a button that will trigger the overlay:
+
+<CodeGroup>
+
+```html index.html
+<button id="myButton">Open Survey</button>
+```
+
+</CodeGroup>
+
+The Saypien JavaScript Library is now integrated into your website, and you can customize it as needed.
+
+### Configuration Options
+
+The library can be configured with the following options:
+
+- `buttonId` (Optional): The ID of the button that triggers the event listener. Set this to `null` if no button is used and the overlay should appear directly when the page loads.
+- `surveyId` (Required): The survey ID used for the iFrame URL.
+- `onComplete` (Optional): Callback function to be executed when the survey is completed.
+- `onClose` (Optional): Callback function to be executed when the close button is clicked.
+- `onOpen` (Optional): Callback function to be executed when the overlay is opened.
+- `onStart` (Optional): Callback function to be executed when the survey is started.
+
+### Example Configuration
+
+Here is an example of a typical configuration:
+
+<CodeGroup>
+
+```javascript
+window.SaypienSurvey.initialize({
+  buttonId: "myButton", // Set to null if no button is used
+  surveyId: "<YOUR_SURVEY_ID>", // Your specific survey ID
+  onComplete: function () {
+    console.log("Survey completed!");
+  },
+  onClose: function () {
+    console.log("Survey closed!");
+  },
+  onOpen: function () {
+    console.log("Survey opened!");
+  },
+  onStart: function () {
+    console.log("Survey started!");
+  },
+});
+```
+
+</CodeGroup>
+
+## Troubleshooting
+
+Here's how to solve some common problems when integrating the Saypien JavaScript Library.
+
+<AccordionGroup>
+  <Accordion title="The overlay is not displayed">
+    Ensure that the `surveyId` is correctly provided and that the button with
+    the specified `buttonId` exists.
+  </Accordion>
+  <Accordion title="An error is displayed in the console">
+    Check the configuration and make sure all required parameters are provided.
+  </Accordion>
+</AccordionGroup>
+```

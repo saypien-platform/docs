@@ -1,0 +1,165 @@
+---
+title: "Styling"
+description: "How to customize the overlay and iFrame of the Saypien JavaScript Library"
+---
+
+<Info>
+  **Note**: You can customize the appearance of the overlay and iFrame to better
+  match the design of your website.
+</Info>
+
+## Customizing the Overlay
+
+You can customize the overlay by adding additional CSS rules. Here are some examples:
+
+### Changing the Background Color
+
+You can change the background color of the overlay to make it darker or lighter:
+
+<CodeGroup>
+
+```css main.css
+#saypien-survey-overlay {
+  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+}
+```
+
+</CodeGroup>
+
+### Adjusting the Overlay Position
+
+You can adjust the position and size of the overlay:
+
+<CodeGroup>
+
+```css main.css
+#saypien-survey-overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+```
+
+</CodeGroup>
+
+## Customizing the iFrame
+
+You can also customize the iFrame by adding additional CSS rules. Here are some examples:
+
+### Changing the Border
+
+You can customize the style of the iFrame in many ways. For example, you can add a border around the iFrame:
+
+<CodeGroup>
+
+```css main.css
+#saypien-survey-iframe {
+  border: 1px solid #000; /* Add a border in your brand color */
+}
+```
+
+</CodeGroup>
+
+### Adjusting the iFrame Size
+
+You can adjust the size of the iFrame to better fit the content:
+
+<CodeGroup>
+
+```css main.css
+#saypien-survey-iframe {
+  width: 80%; /* Adjust width */
+  height: 80%; /* Adjust height */
+  margin: 5% auto; /* Center the iFrame */
+}
+```
+
+</CodeGroup>
+
+## Customizing the Close Button
+
+You can customize the close button to match your website's design:
+
+### Changing the Close Button Style
+
+You can change the appearance of the close button:
+
+<CodeGroup>
+
+```css main.css
+#saypien-survey-close-button {
+  background-color: #fff;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+```
+
+</CodeGroup>
+
+## Example
+
+Here is a complete example that combines the customization options mentioned above:
+
+<CodeGroup>
+
+```html index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Survey</title>
+    <script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+    <script>
+      window.SaypienSurvey.initialize({
+        buttonId: "myButton",
+        surveyId: "<YOUR_SURVEY_ID>",
+      });
+    </script>
+    <style>
+      #saypien-survey-overlay {
+        background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+      }
+      #saypien-survey-iframe {
+        border: none; /* Remove border */
+        width: 90%; /* Adjust width */
+        height: 90%; /* Adjust height */
+        margin: 5% auto; /* Center the iFrame */
+        display: block;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+      #saypien-survey-close-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: #fff;
+        border: none;
+        padding: 10px 15px;
+        font-size: 24px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Welcome to the Survey</h1>
+    <button id="myButton">Open Survey</button>
+  </body>
+</html>
+```
+
+</CodeGroup>
+```

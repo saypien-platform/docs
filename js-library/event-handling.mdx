@@ -1,0 +1,175 @@
+---
+title: "Event Handling"
+description: "Learn how to handle events with the Saypien JavaScript Library"
+---
+
+<Info>
+  **Note**: The Saypien JavaScript Library provides several event callbacks that
+  you can use to execute custom functions at different stages of the survey
+  lifecycle.
+</Info>
+
+## Available Event Callbacks
+
+The Saypien JavaScript Library supports the following event callbacks:
+
+- `onOpen`: Triggered when the overlay is opened.
+- `onClose`: Triggered when the close button is clicked.
+- `onStart`: Triggered when the survey is started.
+- `onComplete`: Triggered when the survey is completed.
+
+## Example Usage
+
+Here is an example of how to use these event callbacks:
+
+<CodeGroup>
+
+```html index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saypien Survey</title>
+    <script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+    <script>
+      window.SaypienSurvey.initialize({
+        buttonId: "myButton",
+        surveyId: "<YOUR_SURVEY_ID>",
+        onComplete: function () {
+          alert("Thank you for completing the survey!");
+        },
+        onClose: function () {
+          console.log("Survey closed by the user.");
+        },
+        onOpen: function () {
+          console.log("Survey overlay opened.");
+        },
+        onStart: function () {
+          console.log("Survey started.");
+        },
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Welcome to the Survey</h1>
+    <button id="myButton">Open Survey</button>
+  </body>
+</html>
+```
+
+</CodeGroup>
+
+## Detailed Explanation
+
+### onComplete
+
+The `onComplete` callback is executed when the survey is completed by the user. This is useful for performing actions such as showing a thank you message or redirecting the user to another page.
+
+<CodeGroup>
+
+```javascript index.js
+window.SaypienSurvey.initialize({
+  surveyId: "<YOUR_SURVEY_ID>",
+  onComplete: function () {
+    alert("Thank you for completing the survey!");
+  },
+});
+```
+
+</CodeGroup>
+
+### onClose
+
+The `onClose` callback is triggered when the user clicks the close button on the survey overlay. You can use this to log the event or to perform any cleanup actions.
+
+<CodeGroup>
+
+```javascript index.js
+window.SaypienSurvey.initialize({
+  surveyId: "<YOUR_SURVEY_ID>",
+  onClose: function () {
+    console.log("Survey closed by the user.");
+  },
+});
+```
+
+</CodeGroup>
+
+### onOpen
+
+The `onOpen` callback is executed when the survey overlay is opened. This can be useful for tracking the event or initializing certain states.
+
+<CodeGroup>
+
+```javascript index.js
+window.SaypienSurvey.initialize({
+  surveyId: "<YOUR_SURVEY_ID>",
+  onOpen: function () {
+    console.log("Survey overlay opened.");
+  },
+});
+```
+
+</CodeGroup>
+
+### onStart
+
+The `onStart` callback is triggered when the survey is started by the user. This can be useful for logging the start event or for analytics purposes.
+
+<CodeGroup>
+
+```javascript index.js
+window.SaypienSurvey.initialize({
+  surveyId: "<YOUR_SURVEY_ID>",
+  onStart: function () {
+    console.log("Survey started.");
+  },
+});
+```
+
+</CodeGroup>
+
+## Combining Callbacks
+
+You can combine multiple event callbacks to handle different events within the survey lifecycle.
+
+<CodeGroup>
+
+```javascript index.js
+window.SaypienSurvey.initialize({
+  surveyId: "<YOUR_SURVEY_ID>",
+  onComplete: function () {
+    alert("Thank you for completing the survey!");
+  },
+  onClose: function () {
+    console.log("Survey closed by the user.");
+  },
+  onOpen: function () {
+    console.log("Survey overlay opened.");
+  },
+  onStart: function () {
+    console.log("Survey started.");
+  },
+});
+```
+
+</CodeGroup>
+
+## Troubleshooting
+
+If your event callbacks are not working as expected, here are some common issues to check:
+
+<AccordionGroup>
+  <Accordion title="The callback function is not being executed">
+    Ensure that the function is correctly defined and that it is being passed in
+    the configuration object of the `initialize` method.
+  </Accordion>
+  <Accordion title="An error is displayed in the console">
+    Check the syntax of your JavaScript code and make sure all required
+    parameters are provided correctly.
+  </Accordion>
+</AccordionGroup>
+
+<Info>For more details, visit our [documentation](#).</Info>
+```
