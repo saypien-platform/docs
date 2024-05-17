@@ -34,9 +34,9 @@
     {
       "group": "JavaScript Library",
       "pages": [
-        "/js-library/quickstart",
-        "/js-library/customization",
-        "/js-library/event-handling"
+        "js-library/quickstart",
+        "js-library/customization",
+        "js-library/event-handling"
       ]
     }
   ]
