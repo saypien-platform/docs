@@ -5,7 +5,7 @@
     "dark": "/logo/primefold-dark.svg",
     "light": "/logo/primefold-light.svg"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#13110e",
     "light": "#f9f8f7",
