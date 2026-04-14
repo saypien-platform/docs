@@ -1,6 +1,6 @@
 ---
 title: "Getting Started"
-description: "How to install and integrate the Saypien JavaScript Library"
+description: "How to install and integrate the Primefold JavaScript Library"
 ---
 
 <Info>
@@ -11,19 +11,7 @@ description: "How to install and integrate the Saypien JavaScript Library"
 
 ### Step 1.
 
-Embed the Saypien JavaScript Library in your website.
-
-<CodeGroup>
-
-```html
-<script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
-```
-
-</CodeGroup>
-
-### Step 2.
-
-Add the JavaScript file to the `<HEAD>` section of your HTML file:
+Add the Primefold JavaScript Library to the `<HEAD>` section of your HTML file:
 
 <CodeGroup>
 
@@ -33,8 +21,8 @@ Add the JavaScript file to the `<HEAD>` section of your HTML file:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saypien Survey</title>
-    <script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+    <title>Primefold Survey</title>
+    <script src="https://xi.primefold.ai/plugins/primefold-survey.min.js"></script>
   </head>
   <body>
     <!-- Your content -->
@@ -44,7 +32,7 @@ Add the JavaScript file to the `<HEAD>` section of your HTML file:
 
 </CodeGroup>
 
-### Step 3.
+### Step 2.
 
 Initialize the library with a configuration:
 
@@ -52,7 +40,7 @@ Initialize the library with a configuration:
 
 ```html index.html
 <script>
-  window.SaypienSurvey.initialize({
+  window.PrimefoldSurvey.initialize({
     buttonId: "myButton", // Set to null if no button is used
     surveyId: "<YOUR_SURVEY_ID>", // Your specific survey ID
   });
@@ -61,19 +49,38 @@ Initialize the library with a configuration:
 
 </CodeGroup>
 
-### Step 4.
+### Step 3.
 
 Add a button that will trigger the overlay:
 
 <CodeGroup>
 
 ```html index.html
-<button id="myButton">Open Survey</button>
+<button id="myButton" class="primefold-survey-button">
+  <span class="primefold-survey-icon"></span>
+  Open Survey
+</button>
 ```
 
 </CodeGroup>
 
-The Saypien JavaScript Library is now integrated into your website, and you can customize it as needed.
+The `primefold-survey-button` class gives your button a styled look out of the box. The icon is optional — you can also use a plain button like `<button id="myButton">Open Survey</button>`.
+
+The Primefold JavaScript Library is now integrated into your website, and you can customize it as needed.
+
+### Opening the survey automatically
+
+If you want the survey to appear automatically when the page loads, set `buttonId` to `null` or leave it out:
+
+<CodeGroup>
+
+```javascript
+window.PrimefoldSurvey.initialize({
+  surveyId: "<YOUR_SURVEY_ID>",
+});
+```
+
+</CodeGroup>
 
 ### Configuration Options
 
@@ -82,7 +89,7 @@ The library can be configured with the following options:
 - `buttonId` (Optional): The ID of the button that triggers the event listener. Set this to `null` if no button is used and the overlay should appear directly when the page loads.
 - `surveyId` (Required): The survey ID used for the iFrame URL.
 - `onComplete` (Optional): Callback function to be executed when the survey is completed.
-- `onClose` (Optional): Callback function to be executed when the close button is clicked.
+- `onClose` (Optional): Callback function to be executed when the survey is closed.
 - `onOpen` (Optional): Callback function to be executed when the overlay is opened.
 - `onStart` (Optional): Callback function to be executed when the survey is started.
 
@@ -93,7 +100,7 @@ Here is an example of a typical configuration:
 <CodeGroup>
 
 ```javascript
-window.SaypienSurvey.initialize({
+window.PrimefoldSurvey.initialize({
   buttonId: "myButton", // Set to null if no button is used
   surveyId: "<YOUR_SURVEY_ID>", // Your specific survey ID
   onComplete: function () {
@@ -115,7 +122,7 @@ window.SaypienSurvey.initialize({
 
 ## Troubleshooting
 
-Here's how to solve some common problems when integrating the Saypien JavaScript Library.
+Here's how to solve some common problems when integrating the Primefold JavaScript Library.
 
 <AccordionGroup>
   <Accordion title="The overlay is not displayed">

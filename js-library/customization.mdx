@@ -1,16 +1,17 @@
 ---
 title: "Styling"
-description: "How to customize the overlay and iFrame of the Saypien JavaScript Library"
+description: "How to customize the overlay and iFrame of the Primefold JavaScript Library"
 ---
 
 <Info>
   **Note**: You can customize the appearance of the overlay and iFrame to better
-  match the design of your website.
+  match the design of your website. The library uses CSS custom properties that
+  you can override in your own stylesheet.
 </Info>
 
 ## Customizing the Overlay
 
-You can customize the overlay by adding additional CSS rules. Here are some examples:
+You can customize the overlay by setting CSS custom properties. Here are some examples:
 
 ### Changing the Background Color
 
@@ -19,25 +20,27 @@ You can change the background color of the overlay to make it darker or lighter:
 <CodeGroup>
 
 ```css main.css
-#saypien-survey-overlay {
-  background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
+:root {
+  --primefold-overlay-bg: rgba(0, 0, 0, 0.7); /* Darker overlay */
 }
 ```
 
 </CodeGroup>
 
-### Adjusting the Overlay Position
+### Adjusting the Position and Size
 
-You can adjust the position and size of the overlay:
+The overlay is positioned as a fullscreen fixed element by default. You can adjust the size and position of the survey window, and control layering:
 
 <CodeGroup>
 
 ```css main.css
-#saypien-survey-overlay {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+:root {
+  --primefold-overlay-z: 99999;         /* Show above other elements */
+  --primefold-iframe-width: 90%;        /* Adjust width */
+  --primefold-iframe-height: 90%;       /* Adjust height */
+  --primefold-iframe-margin: 2.5% auto; /* Center the iFrame */
+  --primefold-iframe-radius: 10px;      /* Corner roundness */
+  --primefold-iframe-shadow: none;      /* Remove shadow */
 }
 ```
 
@@ -54,24 +57,8 @@ You can customize the style of the iFrame in many ways. For example, you can add
 <CodeGroup>
 
 ```css main.css
-#saypien-survey-iframe {
-  border: 1px solid #000; /* Add a border in your brand color */
-}
-```
-
-</CodeGroup>
-
-### Adjusting the iFrame Size
-
-You can adjust the size of the iFrame to better fit the content:
-
-<CodeGroup>
-
-```css main.css
-#saypien-survey-iframe {
-  width: 80%; /* Adjust width */
-  height: 80%; /* Adjust height */
-  margin: 5% auto; /* Center the iFrame */
+:root {
+  --primefold-iframe-border: 2px solid #000; /* Add a border in your brand color */
 }
 ```
 
@@ -88,18 +75,68 @@ You can change the appearance of the close button:
 <CodeGroup>
 
 ```css main.css
-#saypien-survey-close-button {
-  background-color: #fff;
-  border: none;
-  padding: 10px 15px;
-  font-size: 24px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+:root {
+  --primefold-close-bg: #333;          /* Dark background */
+  --primefold-close-color: #fff;       /* White icon */
+  --primefold-close-size: 48px;        /* Larger button */
+  --primefold-close-font-size: 28px;   /* Larger icon */
+  --primefold-close-shadow: none;      /* No shadow */
+  --primefold-close-top: 20px;         /* Distance from top */
+  --primefold-close-right: 20px;       /* Distance from right */
 }
 ```
 
 </CodeGroup>
+
+## Customizing the Trigger Button
+
+The library provides a styled button class you can use. You can customize its colors:
+
+<CodeGroup>
+
+```css main.css
+:root {
+  --primefold-btn-bg: #7c3aed;     /* Purple background */
+  --primefold-btn-color: #ffffff;   /* White text */
+}
+```
+
+</CodeGroup>
+
+The trigger button automatically adapts to dark backgrounds on your website. If you set custom colors as shown above, the automatic detection is disabled and your chosen colors are used instead.
+
+## Responsive Behavior
+
+On smaller screens (under 480px), the survey overlay automatically adjusts to fill the full screen width for a better mobile experience. No additional configuration is needed.
+
+## Available Properties
+
+Here is a complete list of all the CSS custom properties you can set:
+
+**Overlay:**
+- `--primefold-overlay-bg` — Background color (default: `rgba(0, 0, 0, 0.5)`)
+- `--primefold-overlay-z` — Z-index (default: `1000`)
+
+**Survey window:**
+- `--primefold-iframe-width` — Width (default: `80%`)
+- `--primefold-iframe-height` — Height (default: `80%`)
+- `--primefold-iframe-margin` — Margin / centering (default: `5% auto`)
+- `--primefold-iframe-radius` — Corner radius (default: `10px`)
+- `--primefold-iframe-border` — Border (default: `none`)
+- `--primefold-iframe-shadow` — Shadow (default: `0 0 10px rgba(0, 0, 0, 0.5)`)
+
+**Close button:**
+- `--primefold-close-bg` — Background color (default: `#f8f8f4`)
+- `--primefold-close-color` — Icon color (default: `#1a1917`)
+- `--primefold-close-shadow` — Shadow (default: `0 2px 4px rgba(0, 0, 0, 0.2)`)
+- `--primefold-close-size` — Width and height (default: `40px`)
+- `--primefold-close-font-size` — Icon size (default: `24px`)
+- `--primefold-close-top` — Distance from top (default: `10px`)
+- `--primefold-close-right` — Distance from right (default: `10px`)
+
+**Trigger button:**
+- `--primefold-btn-bg` — Background color (default: `#1a1917`)
+- `--primefold-btn-color` — Text color (default: `#f8f8f4`)
 
 ## Example
 
@@ -114,49 +151,30 @@ Here is a complete example that combines the customization options mentioned abo
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Your Survey</title>
-    <script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+    <script src="https://xi.primefold.ai/plugins/primefold-survey.min.js"></script>
     <script>
-      window.SaypienSurvey.initialize({
+      window.PrimefoldSurvey.initialize({
         buttonId: "myButton",
         surveyId: "<YOUR_SURVEY_ID>",
       });
     </script>
     <style>
-      #saypien-survey-overlay {
-        background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 1000;
-      }
-      #saypien-survey-iframe {
-        border: none; /* Remove border */
-        width: 90%; /* Adjust width */
-        height: 90%; /* Adjust height */
-        margin: 5% auto; /* Center the iFrame */
-        display: block;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-      }
-      #saypien-survey-close-button {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: #fff;
-        border: none;
-        padding: 10px 15px;
-        font-size: 24px;
-        border-radius: 50%;
-        cursor: pointer;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      :root {
+        --primefold-overlay-bg: rgba(0, 0, 0, 0.7);
+        --primefold-iframe-width: 90%;
+        --primefold-iframe-height: 90%;
+        --primefold-iframe-margin: 2.5% auto;
+        --primefold-close-bg: #333;
+        --primefold-close-color: #fff;
       }
     </style>
   </head>
   <body>
     <h1>Welcome to the Survey</h1>
-    <button id="myButton">Open Survey</button>
+    <button id="myButton" class="primefold-survey-button">
+      <span class="primefold-survey-icon"></span>
+      Open Survey
+    </button>
   </body>
 </html>
 ```

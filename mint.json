@@ -1,34 +1,34 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Saypien | Documentation",
+  "name": "Primefold | Documentation",
   "logo": {
-    "dark": "/logo/saypien.svg",
-    "light": "/logo/saypien.svg"
+    "dark": "/logo/primefold-dark.svg",
+    "light": "/logo/primefold-light.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#a18fc3",
-    "light": "#a18fc3",
-    "dark": "#8e75b2",
+    "primary": "#13110e",
+    "light": "#f9f8f7",
+    "dark": "#3e7066",
     "anchors": {
-      "from": "#8e75b2",
-      "to": "#a18fc3"
+      "from": "#3e7066",
+      "to": "#569b8d"
     }
   },
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:support@saypien.io"
+      "url": "mailto:support@primefold.ai"
     }
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://saypien.io/dashboard"
+    "url": "https://xi.primefold.ai/dashboard"
   },
 
   "navigation": [
     {
-      "group": "Saypien SDK",
+      "group": "Primefold SDK",
       "pages": ["introduction"]
     },
     {

@@ -1,20 +1,20 @@
 ---
 title: "Event Handling"
-description: "Learn how to handle events with the Saypien JavaScript Library"
+description: "Learn how to handle events with the Primefold JavaScript Library"
 ---
 
 <Info>
-  **Note**: The Saypien JavaScript Library provides several event callbacks that
+  **Note**: The Primefold JavaScript Library provides several event callbacks that
   you can use to execute custom functions at different stages of the survey
   lifecycle.
 </Info>
 
 ## Available Event Callbacks
 
-The Saypien JavaScript Library supports the following event callbacks:
+The Primefold JavaScript Library supports the following event callbacks:
 
 - `onOpen`: Triggered when the overlay is opened.
-- `onClose`: Triggered when the close button is clicked.
+- `onClose`: Triggered when the survey is closed (via the close button or the ESC key).
 - `onStart`: Triggered when the survey is started.
 - `onComplete`: Triggered when the survey is completed.
 
@@ -30,10 +30,10 @@ Here is an example of how to use these event callbacks:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saypien Survey</title>
-    <script src="https://saypien.io/plugins/saypien-survey.min.js"></script>
+    <title>Primefold Survey</title>
+    <script src="https://xi.primefold.ai/plugins/primefold-survey.min.js"></script>
     <script>
-      window.SaypienSurvey.initialize({
+      window.PrimefoldSurvey.initialize({
         buttonId: "myButton",
         surveyId: "<YOUR_SURVEY_ID>",
         onComplete: function () {
@@ -53,7 +53,10 @@ Here is an example of how to use these event callbacks:
   </head>
   <body>
     <h1>Welcome to the Survey</h1>
-    <button id="myButton">Open Survey</button>
+    <button id="myButton" class="primefold-survey-button">
+      <span class="primefold-survey-icon"></span>
+      Open Survey
+    </button>
   </body>
 </html>
 ```
@@ -69,7 +72,7 @@ The `onComplete` callback is executed when the survey is completed by the user. 
 <CodeGroup>
 
 ```javascript index.js
-window.SaypienSurvey.initialize({
+window.PrimefoldSurvey.initialize({
   surveyId: "<YOUR_SURVEY_ID>",
   onComplete: function () {
     alert("Thank you for completing the survey!");
@@ -81,12 +84,12 @@ window.SaypienSurvey.initialize({
 
 ### onClose
 
-The `onClose` callback is triggered when the user clicks the close button on the survey overlay. You can use this to log the event or to perform any cleanup actions.
+The `onClose` callback is triggered when the user closes the survey overlay, either by clicking the close button or by pressing the ESC key. You can use this to log the event or to perform any cleanup actions.
 
 <CodeGroup>
 
 ```javascript index.js
-window.SaypienSurvey.initialize({
+window.PrimefoldSurvey.initialize({
   surveyId: "<YOUR_SURVEY_ID>",
   onClose: function () {
     console.log("Survey closed by the user.");
@@ -103,7 +106,7 @@ The `onOpen` callback is executed when the survey overlay is opened. This can be
 <CodeGroup>
 
 ```javascript index.js
-window.SaypienSurvey.initialize({
+window.PrimefoldSurvey.initialize({
   surveyId: "<YOUR_SURVEY_ID>",
   onOpen: function () {
     console.log("Survey overlay opened.");
@@ -120,7 +123,7 @@ The `onStart` callback is triggered when the survey is started by the user. This
 <CodeGroup>
 
 ```javascript index.js
-window.SaypienSurvey.initialize({
+window.PrimefoldSurvey.initialize({
   surveyId: "<YOUR_SURVEY_ID>",
   onStart: function () {
     console.log("Survey started.");
@@ -137,7 +140,7 @@ You can combine multiple event callbacks to handle different events within the s
 <CodeGroup>
 
 ```javascript index.js
-window.SaypienSurvey.initialize({
+window.PrimefoldSurvey.initialize({
   surveyId: "<YOUR_SURVEY_ID>",
   onComplete: function () {
     alert("Thank you for completing the survey!");
